@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: DB_DBT_AMORNAKOUAA_DEV  
+    schema: DBT_AMOR_SEEDS  
+    tables:
+      - name: RESTAURANTS
+
+  - name: stage_data
+    database: DB_DBT_AMORNAKOUAA_DEV  
+    schema: DBT_AMOR  
+    tables:
+      - name: RESTAURANT_SUNDAY
+      - name: SUM_EMPLOYEES
