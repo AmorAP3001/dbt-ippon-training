@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: DB_DBT_AMORNAKOUAA_DEV  
+    schema: SOURCE  
+    tables:
+      - name: ORDERS
+      - name: RESTAURANTS
+      - name: dishes
