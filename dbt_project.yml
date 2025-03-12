@@ -32,7 +32,12 @@ models:
   dbt_ippon_training:
     # Config indicated by + and applies to all files under models/
     marts:
-      +materialized: table
+      #+materialized: table
+      +schema: silver
+    staging:
+      +materialized: ephemeral
 seeds:
   dbt_ippon_training:
     +schema: seeds
+vars:
+  nb_restaurants_to_show : '10'
