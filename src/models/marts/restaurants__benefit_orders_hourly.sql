@@ -1,10 +1,12 @@
 {{
     config(
         materialized='incremental',
-        unique_key = ['identifier','hour']
+        unique_key = ['identifier','hour'],
+        incremental_strategy='merge',
+        merge_exclude_columns = ['job_insert_at_utc','job_insert_id'],
+        tmp_relation_type ='table'
     )
 }}
-
 select 
     d.identifier                                           as identifier
     , d.name as name
@@ -12,6 +14,7 @@ select
     , count(*)                                             as nb_ordered
     , sum(d.selling_price)                                 as global_turnover
     , sum(d.selling_price - d.production_cost )             as global_profit
+    ,{{add_technical_columns()}}
 from 
     {{ ref('stg_orders__dishes_flattened') }} as odf
 left join 
