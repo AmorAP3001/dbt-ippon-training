@@ -35,7 +35,7 @@ models:
       #+materialized: table
       +schema: silver
     staging:
-      +materialized: ephemeral
+      #+materialized: ephemeral
 seeds:
   dbt_ippon_training:
     +schema: seeds
