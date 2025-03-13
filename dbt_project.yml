@@ -41,3 +41,4 @@ seeds:
     +schema: seeds
 vars:
   nb_restaurants_to_show : '10'
+  test_from_sample : 'true'
