@@ -4,6 +4,12 @@ models:
     tests:
       - dbt_utils.equality:
           compare_model: ref('expect_restaurants__benefit_orders_hourly')
+          exclude_columns:
+            - JOB_INSERT_ID
+            - JOB_INSERT_AT_UTC
+            - RUN_STARTED_AT_UTC
+            - JOB_MODIFY_AT_UTC
+            - JOB_MODIFY_ID
           tags: ['unit_testing']
     columns:
       - name: IDENTIFIER
@@ -15,6 +21,9 @@ unit_tests:
   - name: test_is_valid_benefit_orders_hourly
     description: "Check my restaurants__benefit_orders_hourly"
     model: restaurants__benefit_orders_hourly
+    overrides:
+      macros:
+        is_incremental : false 
     given:
       - input: ref('stg_orders__dishes_flattened')
         rows:
