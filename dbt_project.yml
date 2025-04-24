@@ -29,15 +29,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 models:
+  elementary:
+    +schema: "elementary"
   dbt_ippon_training:
     # Config indicated by + and applies to all files under models/
     marts:
       #+materialized: table
       +schema: silver
     staging:
-      +materialized: ephemeral
+      #+materialized: ephemeral  
 seeds:
   dbt_ippon_training:
     +schema: seeds
 vars:
   nb_restaurants_to_show : '10'
+  test_from_sample : 'true'

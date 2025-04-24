@@ -5,4 +5,4 @@ SELECT distinct
     , payment_method::string as payment_method
     , amount::number(30, 8) as amount
     , created_at::timestamp as created_at
-     from {{source ("raw_data","ORDERS")}}
+     from {{mockable_base("raw_data","ORDERS")}}
